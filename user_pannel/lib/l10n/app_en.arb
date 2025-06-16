@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "dashboard": "Dashboard",
+  "totalCarted": "Total Carted Products",
+  "deliveryAddress": "Delivery Address",
+  "tapToEditDeliveryInfo": "Tap to edit your delivery information",
+  "address": "Address",
+  "location": "Location",
+  "country": "Country",
+  "editAddress": "Edit Address",
+  "updateYourDeliveryInformation": "Update your delivery information",
+  "phone": "Phone"
+}

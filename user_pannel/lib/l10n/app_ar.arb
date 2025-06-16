@@ -1,0 +1,13 @@
+{
+  "@@locale": "ar",
+  "dashboard": "لوحة التحكم",
+  "totalCarted": "إجمالي المنتجات في العربة",
+  "deliveryAddress": "عنوان التوصيل",
+  "tapToEditDeliveryInfo": "اضغط لتعديل معلومات التوصيل",
+  "address": "العنوان",
+  "location": "الموقع",
+  "country": "البلد",
+  "editAddress": "تعديل العنوان",
+  "updateYourDeliveryInformation": "تحديث معلومات التوصيل الخاصة بك",
+  "phone": "رقم الهاتف"
+}
