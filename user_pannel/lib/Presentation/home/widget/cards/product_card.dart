@@ -14,6 +14,13 @@ Padding productCard(BuildContext context, ProductModel product) {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
+              image: const DecorationImage(
+                opacity: 0.2,
+                image: AssetImage(
+                  "assets/images/bg.png",
+                ), // Your background image
+                fit: BoxFit.cover,
+              ),
               color: AppColors.fontWhite,
               boxShadow: [
                 BoxShadow(

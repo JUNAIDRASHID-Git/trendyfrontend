@@ -1,5 +1,5 @@
-// final baseHost = "https://trendybacked.onrender.com";
-final baseHost = "http://localhost:8080";
+final baseHost = "https://trendybacked.onrender.com";
+// final baseHost = "http://localhost:8080";
 
 final googleAuthEndpoind = "$baseHost/auth/google-user";
 

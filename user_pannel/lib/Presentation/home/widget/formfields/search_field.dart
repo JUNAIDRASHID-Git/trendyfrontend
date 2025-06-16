@@ -10,7 +10,7 @@ TextFormField searchField(TextEditingController searchController) {
       hintText: "Search",
       prefixIcon: Padding(
         padding: EdgeInsets.only(left: 10),
-        child: Icon(Icons.search, size: 32, color: AppColors.primary),
+        child: Icon(Icons.search, size: 28, color: AppColors.primary),
       ),
       border: OutlineInputBorder(
         borderSide: BorderSide.none,

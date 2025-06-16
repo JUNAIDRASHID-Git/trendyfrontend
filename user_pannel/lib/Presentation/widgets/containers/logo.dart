@@ -14,7 +14,8 @@ Container logoContainer() {
           'assets/images/trendy_logo.png', // Replace with your logo path
           height: 40,
           width: 40,
-          color: AppColors.fontWhite,
+          filterQuality: FilterQuality.high,
+          color: AppColors.primary,
           // If you want to tint the logo
         ),
         SizedBox(width: 5),
@@ -22,9 +23,9 @@ Container logoContainer() {
           "Trendy Chef",
           style: TextStyle(
             fontSize: 20,
-            color: AppColors.fontWhite,
+            color: AppColors.primary,
             fontFamily: "logofont",
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ],

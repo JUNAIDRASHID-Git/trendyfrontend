@@ -5,7 +5,6 @@ import 'package:trendychef/Presentation/widgets/sliders/auto_crousel_slider.dart
 import 'package:trendychef/core/constants/colors.dart';
 import 'package:trendychef/core/services/api/product/get.dart';
 import 'package:trendychef/core/services/data/models/category.dart';
-import 'package:trendychef/core/theme/colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -70,7 +69,10 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AutoSlidingBanner(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: AutoSlidingBanner(),
+                  ),
                   // Build category sections
                   ...categoryList.map(
                     (category) => _buildCategorySection(category),
@@ -99,38 +101,21 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 8,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.fontWhite,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.15),
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
+              Text(
+                category.name?.toUpperCase() ?? "Category",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Poppins",
+                  letterSpacing: 1,
+                  shadows: [
+                    Shadow(
+                      offset: Offset(0, 1),
+                      blurRadius: 2,
+                      color: AppColors.fontBlack.withOpacity(0.2),
                     ),
                   ],
-                ),
-                child: Text(
-                  category.name?.toUpperCase() ?? "Category",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Poppins",
-                    letterSpacing: 1,
-                    shadows: [
-                      Shadow(
-                        offset: Offset(0, 1),
-                        blurRadius: 2,
-                        color: AppColors.fontBlack.withOpacity(0.2),
-                      ),
-                    ],
-                    color: AppColors.primary,
-                  ),
+                  color: AppColors.primary,
                 ),
               ),
               TextButton(
@@ -141,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   "View All",
                   style: TextStyle(
-                    color: deepGreen,
+                    color: AppColors.primary,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

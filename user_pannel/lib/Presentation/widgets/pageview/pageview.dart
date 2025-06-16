@@ -102,13 +102,16 @@ class BottomNavScreenState extends State<BottomNavScreen> {
         ),
       ),
       appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        leadingWidth: 180,
-        leading: IconButton(
-          icon: logoContainer(),
-          onPressed: () {
+        // backgroundColor: AppColors.primary,
+        leadingWidth: 165,
+        leading: GestureDetector(
+          onTap: () {
             _scaffoldKey.currentState?.openDrawer();
           },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0), // reduce default padding
+            child: logoContainer(),
+          ),
         ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -117,7 +120,7 @@ class BottomNavScreenState extends State<BottomNavScreen> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: SizedBox(
-                  width: 180,
+                  width: 144,
                   height: 45,
                   child: searchField(searchController),
                 ),

@@ -16,7 +16,7 @@ class ProfilePage extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               FutureBuilder<UserModel?>(
                 future: fetchUser(),
                 builder: (context, snapshot) {
@@ -30,22 +30,29 @@ class ProfilePage extends StatelessWidget {
 
                   final user = snapshot.data!;
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: AppColors.primary.withOpacity(0.8),
-                          ),
-                          padding: const EdgeInsets.all(4),
-                          child: const Icon(
-                            Icons.person,
-                            color: Colors.white,
-                            size: 80,
+                        ClipOval(
+                          child: SizedBox(
+                            width: 80,
+                            height: 80,
+                            child: Image.network(
+                              user.picture!,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Container(
+                                  color: AppColors.primary.withOpacity(0.8),
+                                  alignment: Alignment.center,
+                                  child: const Icon(
+                                    Icons.person,
+                                    color: Colors.white,
+                                    size: 60,
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ),
                         const SizedBox(width: 20),
@@ -57,13 +64,13 @@ class ProfilePage extends StatelessWidget {
                                   ? user.name!
                                   : 'Guest',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 18,
                                 fontFamily: "Poppins",
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.fontBlack,
                               ),
                             ),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 5),
                             Text(
                               user.email?.isNotEmpty == true
                                   ? user.email!

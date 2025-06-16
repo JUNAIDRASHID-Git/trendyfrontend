@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trendychef/Presentation/checkout/bloc/check_out_bloc.dart';
 import 'package:trendychef/Presentation/checkout/widgets/check_out_price_row.dart';
-import 'package:trendychef/Presentation/checkout/widgets/payment_methord.dart';
 import 'package:trendychef/Presentation/widgets/address_row/address_row_container.dart';
 import 'package:trendychef/Presentation/widgets/buttons/payment.dart';
 import 'package:trendychef/Presentation/widgets/product/expandable_product_list_view.dart';
@@ -69,15 +68,11 @@ class CheckOutPage extends StatelessWidget {
                         const SizedBox(height: 10),
                         checkOutPriceDetailsRow(state),
                         const SizedBox(height: 20),
-                        PaymentMethodSelector(
-                          onMethodSelected: (selectedMethod) {
-                            // TODO: handle selected payment method
-                          },
+
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 60),
+                          child: paymentSwipeButton(context),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.symmetric(horizontal: 60),
-                        //   child: paymentSwipeButton(context),
-                        // ),
                       ],
                     );
                   } else {

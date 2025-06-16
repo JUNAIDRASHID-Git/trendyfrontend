@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:trendychef/Presentation/checkout/check_out.dart';
 import 'package:trendychef/Presentation/intro/page/intro.dart';
+import 'package:trendychef/Presentation/profile/profile.dart';
 import 'package:trendychef/Presentation/search/bloc/search_bloc.dart';
 import 'package:trendychef/l10n/app_localizations.dart';
 
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
           return supportedLocales.first;
         },
         home: const IntroPage(),
+
         // home: CheckOutPage(),
       ),
     );

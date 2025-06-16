@@ -40,7 +40,13 @@ flutter:
   generate: true
 
   assets:
-    - assets/images/
+    - assets/images/riyal_logo.png
+    - assets/images/trendy_logo.png
+    - assets/images/google_logo.png
+    - assets/images/apple_logo.png
+    - assets/images/banner_1.jpg
+    - assets/images/banner_2.jpg
+    - assets/images/bg.png
     - assets/lottie/shopping.json
     - assets/lottie/auth.json
 

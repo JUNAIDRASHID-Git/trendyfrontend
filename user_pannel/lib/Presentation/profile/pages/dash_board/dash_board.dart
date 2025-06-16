@@ -37,38 +37,30 @@ class Dashboard extends StatelessWidget {
           } else if (state is UserDashLoaded) {
             final user = state.user;
             final address = user.address;
-            return Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Dashboard",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(height: 5),
-                  ExpandableAddressRow(
-                    address: address,
-                    phone: state.user.phone ?? "",
-                  ),
-                  const SizedBox(height: 5),
-
-                  _buildRow(
-                    "Total Carted Products",
-                    "${state.items.length}",
-                    Colors.deepPurple,
-                    Icons.shopping_cart,
-                  ),
-                  const SizedBox(height: 5),
-
-                  _buildRow(
-                    "Total Purchased",
-                    "${state.totalPurchased.toStringAsFixed(2)} SAR",
-                    Colors.green,
-                    Icons.monetization_on,
-                  ),
-                ],
-              ),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ExpandableAddressRow(
+                  address: address,
+                  phone: state.user.phone ?? "",
+                ),
+                const SizedBox(height: 5),
+            
+                _buildRow(
+                  "Total Carted Products",
+                  "${state.items.length}",
+                  Colors.deepPurple,
+                  Icons.shopping_cart,
+                ),
+                const SizedBox(height: 5),
+            
+                _buildRow(
+                  "Total Purchased",
+                  "${state.totalPurchased.toStringAsFixed(2)} SAR",
+                  Colors.green,
+                  Icons.monetization_on,
+                ),
+              ],
             );
           } else if (state is UserDashError) {
             return Center(child: Text("❌ ${state.message}"));
