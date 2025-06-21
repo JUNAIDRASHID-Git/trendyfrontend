@@ -37,4 +37,52 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get phone => 'رقم الهاتف';
+
+  @override
+  String get trendyChef => 'الشيف العصري';
+
+  @override
+  String get addtocart => 'أضف إلى السلة';
+
+  @override
+  String get yourCartISEmpty => 'سلة التسوق الخاصة بك فارغة';
+
+  @override
+  String get totalCartedProducts => 'إجمالي المنتجات المحملة بعربة التسوق';
+
+  @override
+  String get totalPurchased => 'إجمالي المشتريات';
+
+  @override
+  String get dash => 'اندفاعة';
+
+  @override
+  String get order => 'طلب';
+
+  @override
+  String get wishList => 'قائمة الرغبات';
+
+  @override
+  String get profile => 'حساب تعريفي';
+
+  @override
+  String get cart => 'عربة';
+
+  @override
+  String get shop => 'محل';
+
+  @override
+  String get search => 'يبحث';
+
+  @override
+  String get viewAll => 'عرض الكل';
+
+  @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
+  String get checkout => 'الدفع';
+
+  @override
+  String get items => 'أغراض';
 }

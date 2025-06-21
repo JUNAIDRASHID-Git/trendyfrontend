@@ -9,5 +9,21 @@
   "country": "Country",
   "editAddress": "Edit Address",
   "updateYourDeliveryInformation": "Update your delivery information",
-  "phone": "Phone"
+  "phone": "Phone",
+  "trendyChef": "Trendy Chef",
+  "addtocart": "Add to Cart",
+  "yourCartISEmpty": "Your Cart Is Empty",
+  "totalCartedProducts": "Total Carted Products",
+  "totalPurchased": "Total Purchased",
+  "dash": "Dash",
+  "order": "Order",
+  "wishList": "WishList",
+  "profile": "Profile",
+  "cart": "Cart",
+  "shop": "Shop",
+  "search": "Search",
+  "viewAll": "View All",
+  "logout": "LogOut",
+  "checkout": "CheckOut",
+  "items": "Items"
 }

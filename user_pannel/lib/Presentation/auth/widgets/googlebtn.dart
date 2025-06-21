@@ -1,5 +1,8 @@
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:trendychef/core/services/api/auth/auth.dart';
 
 Container googleBtn(BuildContext context) {
@@ -18,19 +21,44 @@ Container googleBtn(BuildContext context) {
           try {
             final auth = FirebaseAuth.instance;
 
-            // Create a Google Auth provider
-            final googleProvider = GoogleAuthProvider();
-
-            // Sign in using a popup (only supported on web)
-            final userCredential = await auth.signInWithPopup(googleProvider);
-
-            final user = userCredential.user;
-            final idToken = await user?.getIdToken();
-
-            if (idToken != null) {
-              userGoogleAuthHandler(idToken, context);
+            if (kIsWeb) {
+              // ✅ Web: Use signInWithPopup
+              final googleProvider = GoogleAuthProvider();
+              final userCredential = await auth.signInWithPopup(googleProvider);
+              final idToken = await userCredential.user?.getIdToken();
+              if (idToken != null) {
+                userGoogleAuthHandler(idToken, context);
+              } else {
+                print("❌ Failed to get ID token");
+              }
             } else {
-              print("❌ Failed to get ID token");
+              // ✅ Android/iOS/Desktop: Use google_sign_in package
+              final GoogleSignInAccount? googleUser =
+                  await GoogleSignIn().signIn();
+
+              if (googleUser == null) {
+                print("❌ Sign-in aborted by user");
+                return;
+              }
+
+              final GoogleSignInAuthentication googleAuth =
+                  await googleUser.authentication;
+
+              final credential = GoogleAuthProvider.credential(
+                accessToken: googleAuth.accessToken,
+                idToken: googleAuth.idToken,
+              );
+
+              final userCredential = await auth.signInWithCredential(
+                credential,
+              );
+              final idToken = await userCredential.user?.getIdToken();
+
+              if (idToken != null) {
+                userGoogleAuthHandler(idToken, context);
+              } else {
+                print("❌ Failed to get ID token");
+              }
             }
           } catch (e) {
             print("❌ Google sign-in error: $e");

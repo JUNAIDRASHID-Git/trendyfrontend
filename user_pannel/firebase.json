@@ -1,14 +1,29 @@
 {
+  "projects": {
+    "default": "trendy-admin-83285"
+  },
+  "targets": {
+    "trendy-admin-83285": {
+      "hosting": {
+        "user": ["trendy-chef-678"]
+      }
+    }
+  },
   "hosting": [
-    {
-      "target": "admin",
-      "public": "build/web",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-    },
     {
       "target": "user",
       "public": "build/web",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }

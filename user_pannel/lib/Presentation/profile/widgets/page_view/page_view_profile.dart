@@ -64,7 +64,7 @@ class _PageViewWidgetState extends State<PageViewWidget> {
               onPageChanged: (index) => setState(() => _currentIndex = index),
               children: [
                 SingleChildScrollView(child: Dashboard()),
-                SingleChildScrollView(child: recentOrder()),
+                SingleChildScrollView(child: RecentOrders()),
                 buildPageContent(
                   "Wishlist",
                   Icons.favorite_border,

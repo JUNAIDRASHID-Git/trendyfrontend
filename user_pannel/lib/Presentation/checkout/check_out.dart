@@ -17,21 +17,20 @@ class CheckOutPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => CheckOutBloc()..add(CheckOutFetchEvent()),
       child: Scaffold(
-        backgroundColor: AppColors.secondary,
         appBar: AppBar(
-          backgroundColor: AppColors.primary,
+          backgroundColor: Colors.transparent,
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back_ios, color: AppColors.fontWhite),
+            icon: Icon(Icons.arrow_back, color: AppColors.primary),
           ),
           title: Row(
             children: [
               Text(
                 "Check Out",
                 style: TextStyle(
-                  color: AppColors.fontWhite,
+                  color: AppColors.primary,
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 5,
@@ -55,23 +54,18 @@ class CheckOutPage extends StatelessWidget {
                     final user = state.user;
                     final address = user.address;
                     final phone = user.phone;
-
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ExpandableAddressRow(
-                          address: address,
-                          phone: phone ?? "",
-                        ),
+                        ExpandableAddressRow(address: address, phone: phone),
                         const SizedBox(height: 5),
                         ExpandableProductList(state: state),
                         const SizedBox(height: 10),
                         checkOutPriceDetailsRow(state),
                         const SizedBox(height: 20),
-
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 60),
-                          child: paymentSwipeButton(context),
+                          child: paymentSwipeButton(context, user.id),
                         ),
                       ],
                     );

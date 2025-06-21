@@ -42,7 +42,7 @@ class Dashboard extends StatelessWidget {
               children: [
                 ExpandableAddressRow(
                   address: address,
-                  phone: state.user.phone ?? "",
+                  phone: state.user.phone,
                 ),
                 const SizedBox(height: 5),
             

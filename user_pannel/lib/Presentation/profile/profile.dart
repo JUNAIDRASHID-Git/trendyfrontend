@@ -29,6 +29,12 @@ class ProfilePage extends StatelessWidget {
                   }
 
                   final user = snapshot.data!;
+
+                  final imageUrl =
+                      user.picture != null && user.picture!.isNotEmpty
+                          ? "https://corsproxy.io/?${Uri.encodeFull(user.picture!)}"
+                          : null;
+
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
@@ -39,7 +45,7 @@ class ProfilePage extends StatelessWidget {
                             width: 80,
                             height: 80,
                             child: Image.network(
-                              user.picture!,
+                              imageUrl ?? "",
                               fit: BoxFit.cover,
                               errorBuilder: (context, error, stackTrace) {
                                 return Container(
@@ -60,8 +66,8 @@ class ProfilePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              user.name?.isNotEmpty == true
-                                  ? user.name!
+                              user.name.isNotEmpty == true
+                                  ? user.name
                                   : 'Guest',
                               style: TextStyle(
                                 fontSize: 18,
@@ -74,8 +80,8 @@ class ProfilePage extends StatelessWidget {
                             Text(
                               user.email?.isNotEmpty == true
                                   ? user.email!
-                                  : (user.phone?.isNotEmpty == true
-                                      ? user.phone!
+                                  : (user.phone.isNotEmpty == true
+                                      ? user.phone
                                       : ''),
                               style: TextStyle(
                                 color: AppColors.fontBlack.withOpacity(0.7),

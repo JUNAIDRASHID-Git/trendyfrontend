@@ -154,6 +154,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Phone'**
   String get phone;
+
+  /// No description provided for @trendyChef.
+  ///
+  /// In en, this message translates to:
+  /// **'Trendy Chef'**
+  String get trendyChef;
+
+  /// No description provided for @addtocart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Cart'**
+  String get addtocart;
+
+  /// No description provided for @yourCartISEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Cart Is Empty'**
+  String get yourCartISEmpty;
+
+  /// No description provided for @totalCartedProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Carted Products'**
+  String get totalCartedProducts;
+
+  /// No description provided for @totalPurchased.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Purchased'**
+  String get totalPurchased;
+
+  /// No description provided for @dash.
+  ///
+  /// In en, this message translates to:
+  /// **'Dash'**
+  String get dash;
+
+  /// No description provided for @order.
+  ///
+  /// In en, this message translates to:
+  /// **'Order'**
+  String get order;
+
+  /// No description provided for @wishList.
+  ///
+  /// In en, this message translates to:
+  /// **'WishList'**
+  String get wishList;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
+
+  /// No description provided for @shop.
+  ///
+  /// In en, this message translates to:
+  /// **'Shop'**
+  String get shop;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'LogOut'**
+  String get logout;
+
+  /// No description provided for @checkout.
+  ///
+  /// In en, this message translates to:
+  /// **'CheckOut'**
+  String get checkout;
+
+  /// No description provided for @items.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get items;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

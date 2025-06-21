@@ -3,8 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trendychef/Presentation/cart/bloc/cart_bloc.dart';
 import 'package:trendychef/Presentation/cart/bloc/cart_event.dart';
 import 'package:trendychef/Presentation/cart/bloc/cart_state.dart';
+import 'package:trendychef/core/constants/colors.dart';
+import 'package:trendychef/l10n/app_localizations.dart';
 
-Expanded cartCardBuilder(CartLoaded state) {
+Expanded cartCardBuilder(CartLoaded state, BuildContext context) {
+  final lang = AppLocalizations.of(context)!;
   return Expanded(
     child: ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -60,7 +63,9 @@ Expanded cartCardBuilder(CartLoaded state) {
                     children: [
                       // Product Name
                       Text(
-                        item.productEName,
+                        lang.localeName == "en"
+                            ? item.productEName
+                            : item.productArName,
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -164,8 +169,150 @@ Expanded cartCardBuilder(CartLoaded state) {
                     // Delete Button
                     InkWell(
                       onTap: () {
-                        context.read<CartBloc>().add(
-                          DeleteCartItem(item.productId),
+                        showDialog(
+                          context: context,
+                          barrierDismissible:
+                              false, // Prevent dismissing by tapping outside
+                          builder: (BuildContext dialogContext) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              title: Row(
+                                children: [
+                                  const Text('🛒 Remove Item'),
+                                  const Spacer(),
+                                  // Animated sad emoji
+                                  TweenAnimationBuilder<double>(
+                                    duration: const Duration(seconds: 1),
+                                    tween: Tween(begin: 0.5, end: 1.0),
+                                    builder: (context, scale, child) {
+                                      return Transform.scale(
+                                        scale: scale,
+                                        child: const Text(
+                                          '😢',
+                                          style: TextStyle(fontSize: 24),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Text(
+                                    'Are you sure you want to remove this item from your cart?',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  Container(
+                                    padding: const EdgeInsets.all(12),
+                                    decoration: BoxDecoration(
+                                      color: Colors.red.shade50,
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: Colors.red.shade200,
+                                      ),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        const Text(
+                                          '⚠️',
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                        const SizedBox(width: 8),
+                                        const Expanded(
+                                          child: Text(
+                                            'This action cannot be undone',
+                                            style: TextStyle(
+                                              color: Colors.red,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              actionsPadding: const EdgeInsets.all(16),
+                              actions: <Widget>[
+                                // Cancel Button
+                                TextButton.icon(
+                                  icon: const Text(
+                                    '😊',
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  label: const Text(
+                                    'Keep It',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.green,
+                                    ),
+                                  ),
+                                  style: TextButton.styleFrom(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 12,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                      side: const BorderSide(
+                                        color: Colors.green,
+                                      ),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(dialogContext).pop();
+                                    // Optional: Show a brief snackbar
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          '😄 Great choice! Item kept in cart',
+                                        ),
+                                        duration: Duration(seconds: 2),
+                                        backgroundColor: Colors.green,
+                                      ),
+                                    );
+                                  },
+                                ),
+                                const SizedBox(width: 8),
+                                // Delete Button
+                                ElevatedButton.icon(
+                                  icon: const Text(
+                                    '💔',
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  label: const Text(
+                                    'Remove',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.fontWhite,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 12,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    elevation: 2,
+                                  ),
+                                  onPressed: () {
+                                    // Add the delete action
+                                    context.read<CartBloc>().add(
+                                      DeleteCartItem(item.productId),
+                                    );
+                                    Navigator.of(dialogContext).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
                         );
                       },
                       child: Container(

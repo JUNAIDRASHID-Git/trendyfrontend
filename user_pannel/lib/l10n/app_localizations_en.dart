@@ -37,4 +37,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get phone => 'Phone';
+
+  @override
+  String get trendyChef => 'Trendy Chef';
+
+  @override
+  String get addtocart => 'Add to Cart';
+
+  @override
+  String get yourCartISEmpty => 'Your Cart Is Empty';
+
+  @override
+  String get totalCartedProducts => 'Total Carted Products';
+
+  @override
+  String get totalPurchased => 'Total Purchased';
+
+  @override
+  String get dash => 'Dash';
+
+  @override
+  String get order => 'Order';
+
+  @override
+  String get wishList => 'WishList';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get shop => 'Shop';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get viewAll => 'View All';
+
+  @override
+  String get logout => 'LogOut';
+
+  @override
+  String get checkout => 'CheckOut';
+
+  @override
+  String get items => 'Items';
 }

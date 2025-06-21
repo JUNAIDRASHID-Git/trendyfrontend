@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:trendychef/Presentation/cart/cart.dart';
 import 'package:trendychef/Presentation/home/home.dart';
@@ -63,101 +64,67 @@ class BottomNavScreenState extends State<BottomNavScreen> {
 
     return Scaffold(
       key: _scaffoldKey,
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: AppColors.primary),
-              child: Text(
-                'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
-              onTap: () {
-                _onNavBarTap(0);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_cart),
-              title: Text('Cart'),
-              onTap: () {
-                _onNavBarTap(1);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
-              onTap: () {
-                _onNavBarTap(2);
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
       appBar: AppBar(
-        // backgroundColor: AppColors.primary,
-        leadingWidth: 165,
-        leading: GestureDetector(
-          onTap: () {
-            _scaffoldKey.currentState?.openDrawer();
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(8.0), // reduce default padding
-            child: logoContainer(),
+        toolbarHeight: 75,
+        leadingWidth: 0,
+        leading: Text(""),
+        title: SvgPicture.asset("assets/images/trendy_logo.svg", width: 100),
+        actionsPadding: EdgeInsets.only(),
+        actions: [
+          if (screenWidth > 600)
+            TextButton(
+              onPressed: () => _onNavBarTap(0),
+              child: Text(
+                "Shop",
+                style: TextStyle(
+                  color:
+                      _selectedIndex == 0
+                          ? AppColors.primary
+                          : AppColors.primary.withOpacity(0.8),
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          if (screenWidth > 600)
+            TextButton(
+              onPressed: () => _onNavBarTap(1),
+              child: Text(
+                "Cart",
+                style: TextStyle(
+                  color:
+                      _selectedIndex == 1
+                          ? AppColors.primary
+                          : AppColors.primary.withOpacity(0.8),
+                ),
+              ),
+            ),
+          if (screenWidth > 600)
+            TextButton(
+              onPressed: () => _onNavBarTap(2),
+              child: Text(
+                "Profile",
+                style: TextStyle(
+                  color:
+                      _selectedIndex == 2
+                          ? AppColors.primary
+                          : AppColors.primary.withOpacity(0.8),
+                ),
+              ),
+            ),
+          if (_selectedIndex == 0)
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                width: 150,
+                height: 45,
+                child: searchField(searchController, context),
+              ),
+            ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: LanguageSelector(),
           ),
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            if (_selectedIndex == 0)
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SizedBox(
-                  width: 144,
-                  height: 45,
-                  child: searchField(searchController),
-                ),
-              ),
-            if (screenWidth > 600)
-              TextButton(
-                onPressed: () => _onNavBarTap(0),
-                child: Text(
-                  "Shop",
-                  style: TextStyle(
-                    color: _selectedIndex == 0 ? Colors.white : Colors.white70,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            if (screenWidth > 600)
-              TextButton(
-                onPressed: () => _onNavBarTap(1),
-                child: Text(
-                  "Cart",
-                  style: TextStyle(
-                    color: _selectedIndex == 1 ? Colors.white : Colors.white70,
-                  ),
-                ),
-              ),
-            if (screenWidth > 600)
-              TextButton(
-                onPressed: () => _onNavBarTap(2),
-                child: Text(
-                  "Profile",
-                  style: TextStyle(
-                    color: _selectedIndex == 2 ? Colors.white : Colors.white70,
-                  ),
-                ),
-              ),
-          ],
-        ),
+        ],
       ),
       backgroundColor: Colors.transparent,
       extendBody: true,
@@ -167,7 +134,7 @@ class BottomNavScreenState extends State<BottomNavScreen> {
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.white, Colors.grey[200]!],
+                  colors: [Colors.white, Colors.grey.shade200],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),

@@ -8,7 +8,7 @@ Container checkOutPriceDetailsRow(CheckOutLoaded state) {
     decoration: BoxDecoration(
       color: Colors.grey[50],
       borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: Colors.grey[200]!),
+      border: Border.all(color: Colors.grey.shade200),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,

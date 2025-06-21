@@ -4,8 +4,10 @@ import 'package:trendychef/Presentation/cart/cart.dart';
 import 'package:trendychef/Presentation/home/home.dart';
 import 'package:trendychef/Presentation/profile/profile.dart';
 import 'package:trendychef/core/constants/colors.dart';
+import 'package:trendychef/l10n/app_localizations.dart';
 
 Container gNavBottom(BuildContext context) {
+  final lang = AppLocalizations.of(context)!;
   List<Widget> pages = [HomePage(), CartPage(), ProfilePage()];
   return Container(
     width: 200,
@@ -31,12 +33,12 @@ Container gNavBottom(BuildContext context) {
           );
         },
         tabs: [
-          GButton(icon: Icons.shopify_sharp, text: "Shop", onPressed: () {}),
+          GButton(icon: Icons.shopify_sharp, text: lang.shop, onPressed: () {}),
           GButton(
             icon: const IconData(0xec92, fontFamily: 'MaterialIcons'),
-            text: "Cart",
+            text: lang.cart,
           ),
-          GButton(icon: Icons.person, text: "Profile"),
+          GButton(icon: Icons.person, text: lang.profile),
         ],
       ),
     ),

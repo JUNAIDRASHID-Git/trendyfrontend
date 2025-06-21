@@ -1,16 +1,16 @@
 class UserModel {
-  final String? id;
-  final String? name;
-  final String? phone;
+  final String id;
+  final String name;
+  final String phone;
   final String? email;
   final String? picture;
   final String? provider;
   final Address address;
 
   UserModel({
-    this.id,
-    this.name,
-    this.phone,
+    required this.id,
+    required this.name,
+    required this.phone,
     this.email,
     this.picture,
     this.provider,

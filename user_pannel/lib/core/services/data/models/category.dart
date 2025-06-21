@@ -13,7 +13,7 @@ class CategoryModel {
     if (json['Products'] != null) {
       products = <ProductModel>[];
       json['Products'].forEach((v) {
-        products!.add(ProductModel.fromJson(v));
+        products?.add(ProductModel.fromJson(v));
       });
     }
   }

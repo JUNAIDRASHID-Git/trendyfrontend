@@ -9,5 +9,21 @@
   "country": "البلد",
   "editAddress": "تعديل العنوان",
   "updateYourDeliveryInformation": "تحديث معلومات التوصيل الخاصة بك",
-  "phone": "رقم الهاتف"
+  "phone": "رقم الهاتف",
+  "trendyChef" : "الشيف العصري",
+  "addtocart" : "أضف إلى السلة",
+  "yourCartISEmpty" : "سلة التسوق الخاصة بك فارغة",
+  "totalCartedProducts" : "إجمالي المنتجات المحملة بعربة التسوق",
+  "totalPurchased" : "إجمالي المشتريات",
+  "dash" : "اندفاعة",
+  "order" : "طلب",
+  "wishList" : "قائمة الرغبات",
+  "profile" : "حساب تعريفي",
+  "cart" : "عربة",
+  "shop" : "محل",
+  "search" : "يبحث",
+  "viewAll" : "عرض الكل",
+  "logout" : "تسجيل الخروج",
+  "checkout" : "الدفع",
+  "items" : "أغراض"
 }

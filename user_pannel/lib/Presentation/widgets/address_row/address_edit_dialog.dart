@@ -16,7 +16,7 @@ void showEditDialog(BuildContext context, Address address, String phone) {
   final postalCodeController = TextEditingController(text: address.postalCode);
   final countryController = TextEditingController(text: address.country);
 
-  final lang = AppLocalizations.of(context)!;
+  final lang = AppLocalizations.of(context);
 
   showDialog(
     context: context,
@@ -83,7 +83,7 @@ void showEditDialog(BuildContext context, Address address, String phone) {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              lang.editAddress,
+                              lang?.editAddress ?? 'Edit Address',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -91,7 +91,8 @@ void showEditDialog(BuildContext context, Address address, String phone) {
                               ),
                             ),
                             Text(
-                              lang.updateYourDeliveryInformation,
+                              lang?.updateYourDeliveryInformation ??
+                                  'Update your delivery information',
                               style: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 14,
@@ -121,7 +122,7 @@ void showEditDialog(BuildContext context, Address address, String phone) {
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Phone number is required';
-                                } else if (!RegExp(
+                                } else if (RegExp(
                                   r'^[0-9]{10,15}$',
                                 ).hasMatch(value)) {
                                   return 'Enter a valid phone number';
@@ -252,7 +253,7 @@ void showEditDialog(BuildContext context, Address address, String phone) {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            if (formKey.currentState!.validate()) {
+                            if (formKey.currentState?.validate() ?? false) {
                               final updatedAddress = Address(
                                 street: streetController.text,
                                 city: cityController.text,

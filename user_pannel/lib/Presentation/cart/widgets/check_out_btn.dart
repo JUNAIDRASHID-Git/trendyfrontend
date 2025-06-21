@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trendychef/Presentation/cart/bloc/cart_state.dart';
 import 'package:trendychef/Presentation/checkout/check_out.dart';
 import 'package:trendychef/core/constants/colors.dart';
+import 'package:trendychef/l10n/app_localizations.dart';
 
 class CheckoutButton extends StatefulWidget {
   final CartLoaded state;
@@ -48,6 +49,7 @@ class _CheckoutButtonState extends State<CheckoutButton>
 
   @override
   Widget build(BuildContext context) {
+    final lang =  AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 100),
       child: ElevatedButton(
@@ -71,7 +73,7 @@ class _CheckoutButtonState extends State<CheckoutButton>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    '${widget.state.items.length} Items',
+                    '${widget.state.items.length} ${lang.items}',
                     style: TextStyle(
                       color: AppColors.fontWhite.withOpacity(0.9),
                       fontSize: 10,
@@ -100,7 +102,7 @@ class _CheckoutButtonState extends State<CheckoutButton>
               ),
             ),
             Text(
-              'CHECKOUT',
+              lang.checkout.toUpperCase(),
               style: TextStyle(
                 letterSpacing: 1,
                 fontSize: 16,

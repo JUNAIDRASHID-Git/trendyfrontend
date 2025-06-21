@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trendychef/core/constants/colors.dart';
 import 'package:trendychef/core/services/api/cart/post.dart';
+import 'package:trendychef/l10n/app_localizations.dart';
 
 class CartButton extends StatefulWidget {
   final String productId;
@@ -15,7 +16,7 @@ class CartButton extends StatefulWidget {
     required this.productId,
     this.onSuccess,
     this.customText,
-    this.width = 130,
+    this.width = 140,
     this.height = 40,
   });
 
@@ -132,13 +133,14 @@ class _CartButtonState extends State<CartButton>
   }
 
   Widget get _buttonContent {
+    final lang = AppLocalizations.of(context)!;
     switch (_state) {
       case ButtonState.idle:
         return Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              widget.customText ?? "Add to Cart",
+              widget.customText ?? lang.addtocart,
               style: TextStyle(
                 color: AppColors.fontWhite,
                 fontSize: 14,
